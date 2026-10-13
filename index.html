@@ -15,6 +15,9 @@
     @media(max-width:520px){
       body{overflow-x:hidden}.shell{padding:14px 12px 28px}header{margin-bottom:20px}.brand{gap:9px}.brand-mark{width:40px;height:40px;border-radius:12px}.brand b{font-size:20px}.searchbar{margin-bottom:9px;gap:8px}.searchbox input{height:52px;border-radius:14px;font-size:16px}.searchbar button{height:48px;border-radius:14px;padding:0 10px;font-size:14px}.privacy-note{font-size:11px;line-height:1.6;margin-bottom:23px}.status{font-size:14px;margin:-12px 0 13px}.top-grid{gap:12px}.current{min-height:auto;padding:19px;border-radius:20px}.place{flex-wrap:wrap;font-size:14px}.place b{font-size:18px}.weather-main{margin-top:14px}.temp{font-size:62px;letter-spacing:-3px}.condition{font-size:20px;margin:5px 0}.weather-icon{font-size:62px}.facts{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:18px}.fact{padding:10px 6px;text-align:center;border-radius:11px}.fact span{font-size:12px;white-space:nowrap}.fact b{font-size:13px;white-space:nowrap}.alert-card{min-height:auto;padding:18px;border-radius:20px}.alert-head{align-items:flex-start}.alert-title{gap:8px}.alert-icon{width:38px;height:38px}.alert-head h2{font-size:17px}.official{font-size:11px;padding:5px 7px}.alert-body{padding:22px 2px}.alert-body .symbol{font-size:36px}.alert-body h3{font-size:18px}.alert-body p{font-size:14px}.official-link{padding:11px;font-size:14px}.section-title{margin:23px 2px 11px}.section-title h2{font-size:19px}.section-title span{font-size:12px}.forecast{grid-template-columns:repeat(6,112px);gap:8px;scroll-snap-type:x mandatory;scrollbar-width:none}.forecast::-webkit-scrollbar{display:none}.day{scroll-snap-align:start;padding:14px 9px;border-radius:16px}.day .icon{font-size:29px;margin:9px 0}.day .desc{font-size:12px}.insight{padding:15px;border-radius:16px}.insight p{font-size:14px}.insight .i{width:34px;height:34px}footer{font-size:12px;line-height:1.8;margin-top:25px}
     }
+
+    .stars{margin-top:28px}.star-card{background:#0b3a50;border:1px solid #1b536a;border-radius:26px;padding:24px;position:relative;overflow:hidden}.star-card:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:#fbbf2410;right:-70px;top:-110px}.star-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}.star-season small,.star-tali small{display:block;color:#8fb4c2;font-size:13px}.star-season b{display:block;font-size:40px;font-weight:800;color:#fbbf24;line-height:1.25}.star-tali{text-align:left}.star-tali b{display:block;font-size:24px;font-weight:800}.star-desc{color:#b3d0da;line-height:1.8;margin:12px 0 18px;max-width:640px}.bars{display:grid;grid-template-columns:1fr 1fr;gap:12px}.bar{background:#ffffff0b;border:1px solid #ffffff12;border-radius:14px;padding:13px}.bar-h{display:flex;justify-content:space-between;font-size:14px;color:#9fc0cc;margin-bottom:9px}.bar-h b{color:#fff}.track{height:8px;border-radius:9px;background:#ffffff14;overflow:hidden}.track i{display:block;height:100%;border-radius:9px;background:#fbbf24}.track.t i{background:#38bdf8}.star-next{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.next{background:#082f42;border:1px solid #1b5065;border-radius:14px;padding:12px 13px;font-size:14px;color:#9fc0cc}.next b{display:block;color:#fff;font-size:16px;margin-top:3px}.timeline{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(118px,1fr);gap:8px;overflow-x:auto;margin-top:16px;padding-bottom:6px;scrollbar-width:none;scroll-snap-type:x mandatory}.timeline::-webkit-scrollbar{display:none}.season{scroll-snap-align:start;background:#0b374b;border:1px solid #1b5065;border-radius:14px;padding:11px;font-size:13px;color:#9abcc8}.season b{display:block;color:#fff;font-size:15px}.season.now{border-color:#fbbf24;background:#2a3a2c}.season.now b{color:#fbbf24}.star-note{font-size:12px;color:#7398a7;margin:10px 2px 0}
+    @media(max-width:520px){.star-card{padding:18px;border-radius:20px}.star-season b{font-size:32px}.star-tali b{font-size:20px}.bars,.star-next{grid-template-columns:1fr;gap:8px}.star-desc{font-size:14px}}
   </style>
 </head>
 <body>
@@ -42,6 +45,26 @@
       <section id="forecast" class="forecast"></section>
       <section id="insight" class="insight"><span class="i">☂</span><div><h3>مؤشر احترازي من التوقعات</h3><p id="insightText"></p></div></section>
     </div>
+      <section class="stars" id="stars" aria-labelledby="starsTitle">
+        <div class="section-title"><h2 id="starsTitle">النجوم والمواسم</h2><span id="starsToday"></span></div>
+        <article class="star-card">
+          <div class="star-top">
+            <div class="star-season"><small>الموسم الحالي</small><b id="seasonName"></b></div>
+            <div class="star-tali"><small>الطالع الحالي</small><b id="taliName"></b></div>
+          </div>
+          <p class="star-desc" id="seasonDesc"></p>
+          <div class="bars">
+            <div class="bar"><div class="bar-h"><span>الموسم</span><b id="seasonProg"></b></div><div class="track"><i id="seasonBar"></i></div></div>
+            <div class="bar"><div class="bar-h"><span>الطالع</span><b id="taliProg"></b></div><div class="track t"><i id="taliBar"></i></div></div>
+          </div>
+          <div class="star-next">
+            <div class="next">الطالع القادم<b id="nextTali"></b></div>
+            <div class="next">الموسم القادم<b id="nextSeason"></b></div>
+          </div>
+        </article>
+        <div class="timeline" id="seasonsTimeline" aria-label="مواسم السنة"></div>
+        <p class="star-note">حسب التقويم الشعبي في الجزيرة العربية الذي يبدأ بطلوع سهيل في 24 أغسطس. التواريخ تقريبية وقد تختلف يوماً بين المصادر.</p>
+      </section>
   </main>
   <footer>بيانات التوقعات من <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> · الإنذارات الرسمية من <a href="https://new.ncm.gov.sa/ar/early-warning" target="_blank" rel="noopener">المركز الوطني للأرصاد</a></footer>
 </div>
@@ -59,6 +82,54 @@ async function search(city){setStatus('جارٍ البحث عن '+city+'…');$(
 async function weatherByLocation(latitude,longitude){const lat=Number(latitude.toFixed(2)),lon=Number(longitude.toFixed(2));setStatus('جارٍ تحديد مدينتك وتحميل الطقس…');$('dashboard').classList.remove('show');try{const [geo,w]=await Promise.all([fetchTimeout(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=ar`).then(r=>r.json()),fetchTimeout(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,wind_gusts_10m_max&timezone=auto&forecast_days=7`).then(r=>r.json())]);const loc={name:geo.city||geo.locality||geo.principalSubdivision||'موقعك الحالي',admin1:geo.principalSubdivision||'',admin2:geo.localityInfo?.administrative?.[2]?.name||'',country:geo.countryName||''};$('cityInput').value=loc.name;render(loc,w)}catch{setStatus('تعذر تحديد اسم المدينة أو تحميل الطقس. يمكنك البحث باسم المدينة يدوياً.',true)}}
 function useMyLocation(){if(!navigator.geolocation){setStatus('هذا المتصفح لا يدعم تحديد الموقع. ابحث باسم المدينة يدوياً.',true);return}const btn=$('locationBtn');btn.disabled=true;btn.textContent='جارٍ التحديد…';setStatus('سيطلب المتصفح إذنك لتحديد المدينة تقريبياً…');navigator.geolocation.getCurrentPosition(p=>{btn.disabled=false;btn.textContent='◎ استخدم موقعي';weatherByLocation(p.coords.latitude,p.coords.longitude)},e=>{btn.disabled=false;btn.textContent='◎ استخدم موقعي';const msg=e.code===1?'لم تسمح باستخدام الموقع. يمكنك البحث باسم المدينة يدوياً.':e.code===3?'انتهت مهلة تحديد الموقع. حاول مرة أخرى في مكان مفتوح.':'تعذر تحديد الموقع. تأكد من تشغيل خدمة الموقع واستخدم رابط GitHub Pages الآمن.';setStatus(msg,true)},{enableHighAccuracy:false,timeout:12000,maximumAge:600000})}
 $('searchForm').addEventListener('submit',e=>{e.preventDefault();const q=$('cityInput').value.trim();if(q)search(q)});$('locationBtn').addEventListener('click',useMyLocation);search('الرياض');
+
+/* ===== النجوم والمواسم (التقويم الشعبي) ===== */
+const SEASONS=[
+ {n:'سهيل',d:'تنكسر حدة الحر ليلاً ويبدأ الجو بالتلطف تدريجياً، ويطول الليل وتبرد الأسحار.',s:[['الطرفة',8,24],['الجبهة',9,6],['الزبرة',9,20],['الصرفة',10,3]]},
+ {n:'الوسم',d:'موسم الوسمي: أول أمطار الخريف المفيدة للأرض، واعتدال الأجواء، وفيه تُرجى الكمأة والربيع.',s:[['العواء',10,16],['السماك',10,29],['الغفر',11,11],['الزبانا',11,24]]},
+ {n:'المربعانية',d:'أربعون يوماً هي أشد أيام البرد، وفيها أطول ليالي السنة.',s:[['الإكليل',12,7],['القلب',12,20],['الشولة',1,2]]},
+ {n:'الشبط',d:'برد قارس جاف تصحبه رياح باردة، ويشتد البرد في الصباح الباكر.',s:[['النعايم',1,15],['البلدة',1,28]]},
+ {n:'العقارب',d:'آخر الشتاء، تتقلب فيه الأجواء بين برد ودفء مع رياح نشطة.',s:[['سعد الذابح',2,10],['سعد بلع',2,23],['سعد السعود',3,8]]},
+ {n:'الحميمين',d:'بداية الدفء واعتدال الربيع، ويطول النهار.',s:[['سعد الأخبية',3,21],['المقدم',4,3]]},
+ {n:'الذراعين',d:'اعتدال يميل إلى الحرارة، مع رياح وغبار في بعض الأيام.',s:[['المؤخر',4,16],['الرشا',4,29]]},
+ {n:'الثريا',d:'ترتفع الحرارة تدريجياً وتنشط الرياح، ويقترب الصيف.',s:[['الشرطين',5,12],['البطين',5,25],['الثريا',6,7]]},
+ {n:'التويبع',d:'حرارة شديدة وجفاف، وتزداد الرياح الحارة.',s:[['الدبران',6,20]]},
+ {n:'الجوزاء',d:'ذروة حر الصيف ورياح السموم، وأشد أيام القيظ.',s:[['الهقعة',7,3],['الهنعة',7,16]]},
+ {n:'المرزم',d:'حر شديد مع ارتفاع الرطوبة على السواحل.',s:[['الذراع',7,29]]},
+ {n:'الكليبين',d:'آخر جمرة القيظ وأشد الحر قبل طلوع سهيل.',s:[['النثرة',8,11]]}
+];
+const AR_M=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+const dayMs=864e5, d0=d=>new Date(d.getFullYear(),d.getMonth(),d.getDate()), dd=(a,b)=>Math.round((d0(b)-d0(a))/dayMs);
+const daysAr=n=>n===1?'يوم واحد':n===2?'يومان':n<=10?n+' أيام':n+' يوماً';
+const fmtD=d=>d.getDate()+' '+AR_M[d.getMonth()];
+function starList(year){ // السنة الفلكية تبدأ 24 أغسطس من year
+  const out=[];SEASONS.forEach((se,si)=>se.s.forEach(([name,m,day])=>out.push({name,si,start:new Date(m>=8&&!(m===8&&day<24)?year:year+1,m-1,day)})));
+  return out;
+}
+function starState(today=new Date()){
+  const t=d0(today);const y=(t.getMonth()>7||(t.getMonth()===7&&t.getDate()>=24))?t.getFullYear():t.getFullYear()-1;
+  const list=[...starList(y),...starList(y+1)];
+  let i=list.findIndex((x,k)=>x.start<=t&&list[k+1].start>t);
+  const cur=list[i],next=list[i+1];
+  let k=i;while(k>0&&list[k-1].si===cur.si)k--;const sStart=list[k].start;
+  const sNext=list.slice(i+1).find(x=>x.si!==cur.si);
+  return {cur,next,sStart,sNext,today:t,taliLen:dd(cur.start,next.start),seasonLen:dd(sStart,sNext.start),list:list.slice(0,28)};
+}
+function renderStars(){
+  const st=starState();const se=SEASONS[st.cur.si];
+  $('seasonName').textContent=se.n;$('taliName').textContent=st.cur.name;$('seasonDesc').textContent=se.d;
+  const sDay=dd(st.sStart,st.today)+1,tDay=dd(st.cur.start,st.today)+1;
+  $('seasonProg').textContent=`اليوم ${sDay} من ${st.seasonLen}`;$('seasonBar').style.width=(sDay/st.seasonLen*100)+'%';
+  $('taliProg').textContent=`اليوم ${tDay} من ${st.taliLen}`;$('taliBar').style.width=(tDay/st.taliLen*100)+'%';
+  const toT=dd(st.today,st.next.start),toS=dd(st.today,st.sNext.start);
+  $('nextTali').textContent=`${st.next.name} — ${toT===1?'غداً':'بعد '+daysAr(toT)} (${fmtD(st.next.start)})`;
+  $('nextSeason').textContent=`${SEASONS[st.sNext.si].n} — ${toS===1?'غداً':'بعد '+daysAr(toS)} (${fmtD(st.sNext.start)})`;
+  let h='';try{h=new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura-nu-latn',{day:'numeric',month:'long',year:'numeric'}).format(st.today)}catch{}
+  $('starsToday').textContent=fmtD(st.today)+(h?' · '+h:'');
+  const order=SEASONS.map((x,i)=>(st.cur.si+i)%SEASONS.length); // يبدأ بالموسم الحالي
+  $('seasonsTimeline').innerHTML=order.map(i=>{const x=SEASONS[i],first=st.list.find(s=>s.si===i);return `<div class="season ${i===st.cur.si?'now':''}"><b>${x.n}</b>${i===st.cur.si?'الآن':fmtD(first.start)} · ${x.s.length>2?x.s.length+' طوالع':x.s.length===2?'طالعان':'طالع واحد'}</div>`}).join('');
+}
+renderStars();setInterval(renderStars,36e5);
 </script>
 <script src="https://adelss12.github.io/back.js" defer></script>
 </body></html>
